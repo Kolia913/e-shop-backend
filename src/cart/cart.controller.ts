@@ -6,8 +6,7 @@ import { Response } from "express";
 export class CartController{
     constructor(private readonly cartService: CartService) { }
     
-    //@Post() ??
-    @Get('buy')
+    @Post('buy')
     async buyCart(@Res() res: Response, @Body() productsId: string[]){
       const keys: string[] = await this.cartService.buyCart(productsId)
       return res.status(HttpStatus.OK).json(keys)

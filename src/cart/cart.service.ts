@@ -11,9 +11,6 @@ export class CartService{
       const keys: string[] = new Array<string>()
       const query = {_id : productsId}
       const products: ProductModel[] = await this.productModel.find(query)
-      products.forEach(product => {
-         keys.push(product.key)
-      });
-      return keys
+     return products.map(product => product.key)
    }
 }
