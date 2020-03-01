@@ -23,5 +23,9 @@ export const ProductSchema = new mongoose.Schema({
     categoryId:{
         type: String,
         required: true
+    },
+    platform:{
+        type: Array,
+        required: true
     }
 })

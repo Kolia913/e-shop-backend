@@ -3,6 +3,7 @@ import { InjectModel } from "@nestjs/mongoose";
 import { ProductModel } from "./product.model";
 import { Model } from "mongoose";
 import { CreateProductDto } from "./create-product.dto"
+import { Platform } from "./product-platform.enum";
 
   @Injectable()
   export class ProductService{
@@ -29,11 +30,12 @@ import { CreateProductDto } from "./create-product.dto"
      async deleteProduct(productId: string): Promise<ProductModel>{
         const deletedProduct = await this.productModel.findByIdAndRemove(productId)
         return deletedProduct
-     }
+     } 
 
      async findByCategory(categoryId: string){
         const query = {categoryId: categoryId}
         const products: ProductModel[] = await this.productModel.find(query)
         return products
      }
+
   } 

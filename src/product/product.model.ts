@@ -1,4 +1,5 @@
 import { Document } from 'mongoose';
+import { Platform } from './product-platform.enum';
 
 export interface ProductModel extends Document{
    readonly name: string;
@@ -7,4 +8,5 @@ export interface ProductModel extends Document{
    readonly price: number;
    readonly key: string;
    readonly categoryId: string;
+   readonly platform: Platform[];
 }

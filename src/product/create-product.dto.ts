@@ -1,3 +1,5 @@
+import { Platform } from "./product-platform.enum";
+
 export class CreateProductDto{
   readonly name: string;
   readonly description: string;
@@ -5,4 +7,5 @@ export class CreateProductDto{
   readonly price: number;
   readonly key: string;
   readonly categoryId: string;
+  readonly platform: Platform[];
 }

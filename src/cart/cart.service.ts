@@ -8,9 +8,8 @@ export class CartService{
    constructor(@InjectModel('Product') private readonly productModel: Model<ProductModel>){}
 
    async buyCart(productsId: string[]): Promise<string[]>{
-      const keys: string[] = new Array<string>()
       const query = {_id : productsId}
       const products: ProductModel[] = await this.productModel.find(query)
-     return products.map(product => product.key)
+     return products.map(product => `"${product.name}": ${product.key}`)
    }
 }
