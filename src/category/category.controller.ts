@@ -30,10 +30,7 @@ export class CategoryController{
    @Header('Access-Control-Allow-Origin','*')
    async addCategory(@Res() res: Response, @Body() createCategoryDto: CreateCategoryDto){
        const newCategory: CategoryModel = await this.categoryService.addCategory(createCategoryDto)
-       return res.status(HttpStatus.OK).json({
-           message: `Category has been successfully added!`,
-           category: newCategory
-       })
+       return res.status(HttpStatus.OK).json(newCategory)
    }
 
    @Put('edit/:categoryId')
@@ -45,10 +42,7 @@ export class CategoryController{
           if(!editedCategory){
               throw new NotFoundException(`Category does not exist!`)
           }
-          return res.status(HttpStatus.OK).json({
-              message: `Category has been successfully updated!`,
-              category: editedCategory
-          })
+          return res.status(HttpStatus.OK).json(editedCategory)
    }
 
    @Delete('delete/:categoryId')
@@ -58,9 +52,6 @@ export class CategoryController{
        if(!deletedCategory){
            throw new NotFoundException(`Category does not exist`)
        }
-       return res.status(HttpStatus.OK).json({
-           message: `Category has been deleted!`,
-           category: deletedCategory
-       })
+       return res.status(HttpStatus.OK).json(deletedCategory)
    }
  }

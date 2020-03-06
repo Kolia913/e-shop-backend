@@ -40,10 +40,7 @@ export class ProductController{
     @Header('Access-Control-Allow-Origin', '*')
     async addProudct(@Res() res: Response, @Body() createProductDto: CreateProductDto){
         const newProduct: ProductModel = await this.productService.addProduct(createProductDto)
-        return res.status(HttpStatus.OK).json({
-            message: `Product has been submitted successfully!`,
-            product: newProduct
-        })
+        return res.status(HttpStatus.OK).json(newProduct)
     }
 
     @Put('edit/:productId')
@@ -55,10 +52,7 @@ export class ProductController{
        if(!editedProduct){
            throw new NotFoundException('Product does not exist!')
        }
-       return res.status(HttpStatus.OK).json({
-           message: `Product has been successfully updated`,
-           product: editedProduct
-       })
+       return res.status(HttpStatus.OK).json(editedProduct)
     }
 
     @Delete('delete/:productId')
@@ -68,9 +62,6 @@ export class ProductController{
        if(!deletedProduct){
            throw new NotFoundException('Product does not exist!')
        }
-       return res.status(HttpStatus.OK).json({
-           message: 'Product has been deleted!',
-           product: deletedProduct
-       })
+       return res.status(HttpStatus.OK).json(deletedProduct)
     }
 }
